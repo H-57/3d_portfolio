@@ -1,6 +1,7 @@
+"use client"
 import React from 'react'
 import Computers from './canvas/Computers'
-
+import {motion}from "framer-motion"
 const Hero = () => {
   return (
    <>
@@ -17,6 +18,20 @@ const Hero = () => {
 <div className='absolute w-full lg:h-screen h-[60vh] bottom-0'>
 
 <Computers/>
+</div>
+<div className='absolute bottom-0 w-full flex justify-center '>
+
+<a href='#about' >
+  <div className='border-4  w-[35px] h-[64px] rounded-full flex justify-center p-2 '>
+  <motion.div animate={{y:[0,24,0]}} transition={{
+    duration:1.5,
+    repeat:Infinity,
+    
+  }} className='w-2 h-2 bg-white rounded-md'>
+
+  </motion.div>
+  </div>
+</a>
 </div>
    </section>
    </>
