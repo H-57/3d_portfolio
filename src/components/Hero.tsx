@@ -13,7 +13,7 @@ const Hero = () => {
 <div className='w-1 h-[60vh] rounded-md bg-gradient-to-b from-[#915eff] m-auto mt-[-4px]' />
   </div>
   <div className='font-bold lg:text-4xl text-2xl '><p className='text-6xl lg:text-8xl  '>Hi,I&apos;m <span className=' text-violet-600 '>Tarun</span></p>
-  <p>I am a MERN stack developer and multiple tech stack practical experience.</p></div>
+  <p>I am a MERN stack developer and skilled full stck developer.</p></div>
 </div>
 <div className='absolute w-full lg:h-screen h-[60vh] bottom-0'>
 

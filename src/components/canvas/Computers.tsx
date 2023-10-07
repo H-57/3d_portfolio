@@ -18,7 +18,7 @@ position={IsMobile?[0,-1.5,0]:[0,-4,-1.5]}
   <hemisphereLight intensity={0.5} groundColor={"black"}
    />
 <pointLight intensity={10}
-position={[1,3,2]}
+position={[0,4,2]}
 
 />
 

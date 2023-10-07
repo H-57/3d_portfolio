@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
    
-    <nav className={`fixed z-20 flex justify-between bg-transparent  text-white w-screen transition-all ease-in-out duration-1000 transform ${nav} ${scrollY>20?"bg-[#050816]":"bg-transparent"}`} >
+    <nav className={`fixed z-20 flex justify-between   text-white w-screen transition-all ease-in-out duration-1000 transform ${nav} ${scrollY>20?"bg-[#050816]":"bg-transparent"}`} >
       <div className="px-5 xl:px-12 py-6  w-full block float-right ">
         <Link className="text-3xl font-bold font-heading" href="#">
           {/* <img class="h-9" src="logo.png" alt="logo"> */}
@@ -62,10 +62,10 @@ const Navbar = () => {
 <Bars3BottomLeftIcon onClick={()=>setToggel(!toggel)} className=  {`w-8 h-8 ${toggel?"hidden":"block"}`}   />
 <XMarkIcon onClick={()=>setToggel(!toggel)} className=  {`w-8 h-8 ${!toggel?"hidden":"block"}`} />
    </div>
-   <ul className={`absolute right-0 bg-gray-800 rounded-sm cursor-pointer  ${toggel?"":'hidden'}`}>
+   <ul className={` absolute right-0 bg-gradient-to-l from-black  to-gray-700 rounded-3xl cursor-pointer w-[40vw] m-auto ${toggel?"":'hidden'} opacity-60  `}>
    {
             links.map((link)=>
-            <li onClick={()=>setToggel(!toggel)} key={link.name}><Link className="hover:text-gray-200 hover:bg-slate-600" href={link.url}>{link.name}</Link></li>
+            <li className=' w-fit m-auto' onClick={()=>setToggel(!toggel)} key={link.name}><Link className="hover:text-gray-200 hover:bg-slate-600 font-serif font-bold text-lg" href={link.url}>{link.name}</Link></li>
             )
           }
    </ul>
