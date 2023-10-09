@@ -19,7 +19,7 @@ const Hero = () => {
 
 <Computers/>
 </div>
-<div className='absolute bottom-0 w-full flex justify-center '>
+<div className='absolute bottom-16 w-full flex justify-center '>
 
 <a href='#about' >
   <div className='border-4  w-[35px] h-[64px] rounded-full flex justify-center p-2 '>
