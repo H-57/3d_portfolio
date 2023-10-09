@@ -17,7 +17,7 @@ const experiences = [
     ],
   },
   {company:"tesla",
-    projectName: "ecommerce app ",icon:meta,
+    projectName: "ecommerce app ",icon:tesla,
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -26,7 +26,7 @@ const experiences = [
     ],
   },
   {company:"tesla",
-    projectName: "ecommerce app ",icon:meta,
+    projectName: "ecommerce app ",icon:starbucks,
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
@@ -35,7 +35,7 @@ const experiences = [
     ],
   },
   {company:"tesla",
-    projectName: "ecommerce app ",icon:meta,
+    projectName: "ecommerce app ",icon:shopify,
     points: [
       "Developing and maintaining web applications using React.js and other related technologies.",
       "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
