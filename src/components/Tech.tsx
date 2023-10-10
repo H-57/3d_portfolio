@@ -14,7 +14,7 @@ const Tech = () => {
 
 
   {tech.map((elm,index)=>
-  <motion.div key={elm.tech}
+  <motion.div key={index}
   initial={{opacity:0,y:-100,x:-100}}
   transition={{duration:0.5,delay:0.5*index}}
   whileInView={{opacity:1,y:0,x:0}}
