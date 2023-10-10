@@ -14,7 +14,7 @@ const Tech = () => {
 
 
   {tech.map((elm,index)=>
-  <motion.div
+  <motion.div key={elm.tech}
   initial={{opacity:0,y:-100,x:-100}}
   transition={{duration:0.5,delay:0.5*index}}
   whileInView={{opacity:1,y:0,x:0}}
@@ -22,7 +22,7 @@ const Tech = () => {
   className='w-28 h-28'>
 
 
-    <Ball key={elm.tech} icon={elm.icon}/>
+    <Ball  icon={elm.icon}/>
   </motion.div>
   )}
   </div>
