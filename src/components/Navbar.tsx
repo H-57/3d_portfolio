@@ -28,9 +28,9 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", url: "/" },
-    { name: "Projects", url: "/projects" },
+    { name: "tech", url: "/#tech" },
     { name: "About", url: "#about" },
-    { name: "ContactUs", url: "/contact" },
+    { name: "ContactUs", url: "/#contact" },
   ];
   const [toggel, setToggel] = useState<boolean>(false);
 
@@ -52,7 +52,7 @@ const Navbar = () => {
           >
             {links.map((link) => (
               <li key={link.name}>
-                <Link className="hover:text-gray-200" href={link.url}>
+                <Link className="hover:text-gray-200 capitalize" href={link.url}>
                   {link.name}
                 </Link>
               </li>
