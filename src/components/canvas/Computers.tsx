@@ -13,7 +13,7 @@ const computer=useGLTF('/desktop_pc/scene.gltf')
   return (<>
 
 <mesh scale={IsMobile?0.4:0.8}
-position={IsMobile?[0,-1.5,0]:[0,-4,-1.5]}
+position={IsMobile?[0,-1,0]:[0,-3,-1.5]}
 >
   <hemisphereLight intensity={0.5} groundColor={"black"}
    />

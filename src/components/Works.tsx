@@ -1,9 +1,10 @@
-import React from 'react'
+"use client"
 import Experience from './Experience'
+import SectionWrapper from './hoc/SectionWrapper'
 const Works = () => {
   return (
     <>
-    <section id='work'>
+    <section >
       <div>
 
     <p className=" uppercase text-xl">What I have done so far</p>
@@ -17,4 +18,4 @@ const Works = () => {
   )
 }
 
-export default Works
+export default SectionWrapper(Works,"work")

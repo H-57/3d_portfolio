@@ -4,6 +4,7 @@ import { services } from "./constant";
 import Image, { StaticImageData } from "next/image";
 import { Tilt } from "react-tilt";
 import {motion} from 'framer-motion';
+import SectionWrapper from"./hoc/SectionWrapper"
 
 interface card {
   title: String;
@@ -17,14 +18,15 @@ const ServiceCards = ({ title, icon,index }: card) => {
       <motion.div   
     initial={{opacity:0,x:-100}}
     transition={{duration:0.4,delay:1*index}}
-    animate={{opacity:1,x:0}}
+    whileInView={{opacity:1,x:0}}
+  
  
   className="shadow-[gray_0px_0px_100px_-50px] rounded-[24px] md:w-[250px]  w-full p-[2px] bg-gradient-to-r from-blue-600 to-pink-700" 
   >
 
 
     
-      <div className="rounded-[24px]  bg-[#151030] min-h-[280px]  py-5 px-12 flex flex-col justify-center items-center">
+      <div className="rounded-[24px]  bg-[#151030] sm:min-w-full min-h-[280px]  py-5 px-12 flex flex-col justify-center items-center">
         <Image
           className="w-16 h-16 "
           src={icon}
@@ -41,7 +43,10 @@ const ServiceCards = ({ title, icon,index }: card) => {
 
 const About = () => {
   return (
-    <div id="about" className=" m-5">
+    <motion.div 
+    initial={{opacity:0,y:400}}
+    transition={{type:"spring",duration:1,delay:0.5}}
+    whileInView={{opacity:1,y:0}} className=" m-5">
       <p className=" uppercase text-xl">Introduction</p>
       <h2 className=" font-extrabold text-6xl">Overview.</h2>
       <p className=" md:w-[47vw]  mt-7 text-xl">
@@ -61,8 +66,8 @@ const About = () => {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-export default About;
+export default SectionWrapper(About,"about")
