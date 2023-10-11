@@ -24,7 +24,7 @@ const Ball = ({ icon }:props) => {
 <ambientLight intensity={0.1}/>
 <directionalLight position={[0,0,0]} />
     <mesh
-    
+    dispose={null}
     
     castShadow receiveShadow scale={3}>
 <icosahedronGeometry args={[1,1]}  />
@@ -39,7 +39,7 @@ const Ball = ({ icon }:props) => {
 
 const BallCanvas = ({ icon }: props) => {
   return (
-    <Canvas  gl={{ preserveDrawingBuffer: true }} frameloop="demand">
+    <Canvas   gl={{ preserveDrawingBuffer: true }} frameloop="demand">
       <ambientLight intensity={1} />
 
       <OrbitControls  enableZoom={false} />

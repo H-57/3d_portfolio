@@ -1,6 +1,6 @@
 "use client"
 
-import {Suspense, useEffect,useState} from 'react'
+import {Suspense} from 'react'
 import { OrbitControls, useGLTF } from '@react-three/drei'
 
 import { Canvas } from '@react-three/fiber'

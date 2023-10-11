@@ -43,7 +43,7 @@ const Navbar = () => {
         }`}
       >
         <div className="px-5 xl:px-12 py-6  w-full block float-right ">
-          <Link className="text-3xl font-bold font-heading" href="#">
+          <Link className="text-3xl font-bold font-heading " href="#">
             {/* <img class="h-9" src="logo.png" alt="logo"> */}
             Logo Here.
           </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
           >
             {links.map((link) => (
               <li key={link.name}>
-                <Link className="hover:text-gray-200 capitalize" href={link.url}>
+                <Link className="hover:text-violet-800 capitalize" href={link.url}>
                   {link.name}
                 </Link>
               </li>
