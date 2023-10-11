@@ -25,11 +25,11 @@ function CardDetail({ icon, projectName, points, company }: Card) {
 
   useEffect(() => {
     if (IsInView) {
-      console.log("in view");
+      // console.log("in view");
       animator.start("visible");
       IconAnimator.start("show")
     } else {
-      console.log("not");
+      // console.log("not");
       animator.set("hidden");
       IconAnimator.set("hide")
     }

@@ -10,7 +10,8 @@ const Tech = () => {
 
 
   return (<>
-<div className='flex flex-row flex-wrap justify-center gap-10'>
+  <h2 className=' capitalize md:text-5xl sm:text-3xl font-extrabold m-10 text-center' >Tech Skills</h2>
+<div className='flex flex-row flex-wrap justify-center gap-14'>
 
 
   {tech.map((elm,index)=>

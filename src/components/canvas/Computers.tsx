@@ -54,7 +54,7 @@ camera={{position:IsMobile?[10,4,5]:[20,3,5],fov:25}}
  >
   <ambientLight intensity={1} /> 
   
-  <OrbitControls enableZoom={false}
+  <OrbitControls autoRotate enableZoom={false}
   maxPolarAngle={Math.PI/2}
   minPolarAngle={Math.PI/2}
   />

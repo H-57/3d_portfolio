@@ -22,7 +22,7 @@ const Ball = ({ icon }:props) => {
   return <>
   <Float  >
 <ambientLight intensity={0.1}/>
-<directionalLight position={[0,0,0.25]} />
+<directionalLight position={[0,0,0]} />
     <mesh
     
     
@@ -39,10 +39,10 @@ const Ball = ({ icon }:props) => {
 
 const BallCanvas = ({ icon }: props) => {
   return (
-    <Canvas gl={{ preserveDrawingBuffer: true }} frameloop="demand">
+    <Canvas  gl={{ preserveDrawingBuffer: true }} frameloop="demand">
       <ambientLight intensity={1} />
 
-      <OrbitControls enableZoom={false} />
+      <OrbitControls  enableZoom={false} />
       <Suspense fallback={<Loader />}>
         <Ball icon={icon} />
       </Suspense>

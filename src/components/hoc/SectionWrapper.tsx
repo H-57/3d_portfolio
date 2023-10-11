@@ -9,7 +9,7 @@ return(
     
         return (
           <>
-          <motion.div initial={{opacity:0 }} whileInView={{opacity:1}}   className=" px-10 max-w-7xl mx-auto realtive z-0">
+          <motion.div initial={{opacity:0 }} whileInView={{opacity:1}}   className=" px-10 max-w-7xl mx-auto realtive z-0 overflow-hidden">
             <span className="" id={id}>&nbsp;</span>
              <Component />
           </motion.div>

@@ -28,8 +28,9 @@ const Navbar = () => {
 
   const links = [
     { name: "Home", url: "/" },
+    { name: "Projects", url: "/projects" },
+    { name: "About", url: "/#about" },
     { name: "tech", url: "/#tech" },
-    { name: "About", url: "#about" },
     { name: "ContactUs", url: "/#contact" },
   ];
   const [toggel, setToggel] = useState<boolean>(false);
@@ -37,7 +38,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed z-20 flex justify-between   text-white w-screen transition-all ease-in-out duration-1000 transform ${nav} ${
+        className={` filter  fixed z-20 flex justify-between   text-white w-screen transition-all ease-in-out duration-1000 transform ${nav} ${
           scrollY > 20 ? "bg-[#050816]" : "bg-transparent"
         }`}
       >
