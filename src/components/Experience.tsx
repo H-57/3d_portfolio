@@ -14,9 +14,10 @@ interface Card {
   company: string;
   icon: StaticImageData;
   points: string[];
+  date:string;
 }
 
-function CardDetail({ icon, projectName, points, company }: Card) {
+function CardDetail({ icon, projectName, points, company,date }: Card) {
   const ref = useRef(null);
   const IsInView = useInView(ref);
   const animator = useAnimation();
@@ -44,7 +45,7 @@ function CardDetail({ icon, projectName, points, company }: Card) {
           visibility: "visible",
         }}
         contentArrowStyle={{ borderRight: "7px solid  #232631" }}
-        date="2011 - present"
+        date={date}
         iconStyle={{ background: "white", visibility: "visible" }}
         icon={
           <motion.div
@@ -98,6 +99,7 @@ const Experience: React.FunctionComponent = () => {
             company={elm.company}
             icon={elm.icon}
             points={elm.points}
+            date={elm.date}
           />
         ))}
       </VerticalTimeline>

@@ -24,60 +24,32 @@ const services = [
 ];
 const experiences = [
   {
-    company: "tesla",
+    company: "Mybag",
     projectName: "ecommerce app ",
     icon: meta,
+    date:"July 2023",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+      "Developing and maintaining web applications using Next .js,React.js and other related technologies.",
+      "use of redux toolkit for manage global level state.",
       "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "using react tabel for frontend validation and tailwind css for css.",
     ],
   },
   {
-    company: "tesla",
-    projectName: "ecommerce app ",
+    company: "3d-portfolio",
+    projectName: "portfolio webapp ",
     icon: tesla,
+    date:"October 2023",
     points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
+      "Developing  web applications using React.js,Three.js,Next.js and other related technologies.",
+      "use 3d models for intractive ui with users.",
+      "Using in this framer motion for build animations.",
+      "Using of typescript for better experience in build time and type safety.",
     ],
   },
-  {
-    company: "tesla",
-    projectName: "ecommerce app ",
-    icon: starbucks,
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    company: "tesla",
-    projectName: "ecommerce app ",
-    icon: shopify,
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    company: "tesla",
-    projectName: "ecommerce app ",
-    icon: meta,
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
+ 
+  
+
 ];
 const tech = [
   { icon: html, tech: "html" },
