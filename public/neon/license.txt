@@ -1,0 +1,11 @@
+Model Information:
+* title:	Neon Artroom
+* source:	https://sketchfab.com/3d-models/neon-artroom-28b5a9219108457d911438cd2a431eb9
+* author:	shezarao20 (https://sketchfab.com/shezarao20)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Neon Artroom" (https://sketchfab.com/3d-models/neon-artroom-28b5a9219108457d911438cd2a431eb9) by shezarao20 (https://sketchfab.com/shezarao20) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
