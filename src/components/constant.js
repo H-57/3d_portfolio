@@ -13,7 +13,18 @@ import {
   reactjs,
   docker,
   nodejs,
-  github,git,mongodb,tailwind,typescript,graphql,firebase,aws,redux,threejs,nextjs
+  github,
+  git,
+  mongodb,
+  tailwind,
+  typescript,
+  graphql,
+  firebase,
+  aws,
+  redux,
+  threejs,
+  nextjs,
+  carrent,
 } from "../assets/index";
 
 const services = [
@@ -27,7 +38,7 @@ const experiences = [
     company: "Mybag",
     projectName: "ecommerce app ",
     icon: meta,
-    date:"July 2023",
+    date: "July 2023",
     points: [
       "Developing and maintaining web applications using Next .js,React.js and other related technologies.",
       "use of redux toolkit for manage global level state.",
@@ -39,7 +50,7 @@ const experiences = [
     company: "3d-portfolio",
     projectName: "portfolio webapp ",
     icon: tesla,
-    date:"October 2023",
+    date: "October 2023",
     points: [
       "Developing  web applications using React.js,Three.js,Next.js and other related technologies.",
       "use 3d models for intractive ui with users.",
@@ -47,9 +58,6 @@ const experiences = [
       "Using of typescript for better experience in build time and type safety.",
     ],
   },
- 
-  
-
 ];
 const tech = [
   { icon: html, tech: "html" },
@@ -69,7 +77,15 @@ const tech = [
   { icon: threejs, tech: "threejs" },
   // { icon: firebase, tech: "firebase" },
   { icon: nextjs, tech: "nextjs" },
- 
+];
+const projects = [
+  {
+    image: carrent,
+    title: "Ecommerce webapp",
+    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate debitis ducimus molestias accusamus facere consectetur ipsum velit delectus sed recusandae?",
+    tech: ["reactjs", "next js", "css"],
+    url:"/projects/1"
+  },
 ];
 
-export { services, experiences, tech };
+export { services, experiences, tech, projects };
