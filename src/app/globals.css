@@ -17,17 +17,3 @@ body {
   background: var(--background);
   
 }
-.cl-internal-b3fm6y{
-  display: none;
-}
-
-.cl-card {
-  background-color: var(--card);
-
-}
-.cl-headerTitle, .cl-headerSubtitle,.cl-formFieldLabel  {
-  color: azure;
-}
-#identifier-field{
-  background-color: #20194ffc;
-}

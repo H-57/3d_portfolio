@@ -6,7 +6,7 @@ export const dbConnection=()=>{
         console.log("env of db not found");
     }else{
     
-        mongoose.connect(uri).then(()=>console.log("connected to db success")).catch((e)=>console.log("not connected",e))
+        mongoose.connect(uri).then(()=>console.log("connected to db success"))
     }
     } catch (error) {
         console.log(error);

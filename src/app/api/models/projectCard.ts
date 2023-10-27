@@ -7,11 +7,11 @@ image:{
 },
 title:{
     type:String,
-    require:[true,"please provide title"]
+    require:true
 },
 desc:{
     type:String,
-    require:[true,"please provide description"]
+    require:true
 }
 
 })
