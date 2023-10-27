@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { authMiddleware } from "@clerk/nextjs";
+export default authMiddleware({
+  publicRoutes:["/","/projects","/projects/:id","/api/:path","/:path"],
+  
  
-export function middleware(request:NextRequest) {
-  if (request.url.match("hai")) {
-    console.log("run");
-    return NextResponse.rewrite(new URL('/', request.url))
-  }
- 
+  
+});
 
-}
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)","/","/(api|trpc)(.*)"],
+};
