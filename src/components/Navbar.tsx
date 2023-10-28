@@ -3,8 +3,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
+import { UserButton, useUser } from "@clerk/nextjs";
 
 const Navbar = () => {
+  const { user } = useUser();
   const [nav, setNav] = useState<String>("");
   const [scrollY, setscrollY] = useState<number>(10);
   const handleScroll = () => {
@@ -44,9 +46,14 @@ const Navbar = () => {
         }`}
       >
         <div className="px-5 xl:px-12 py-6  w-full block float-right ">
-          <Link className="text-3xl font-bold font-heading " href="#">
-            <Image className="w-[4rem] h-auto absolute" height={400} width={40} src="/logo.png" alt="logo" />
-           
+          <Link className="text-3xl font-bold font-heading " href="/">
+            <Image
+              className="w-[4rem] h-auto absolute"
+              height={400}
+              width={40}
+              src="/logo.png"
+              alt="logo"
+            />
           </Link>
           {/* Nav Links */}
           <ul
@@ -54,11 +61,15 @@ const Navbar = () => {
           >
             {links.map((link) => (
               <li key={link.name}>
-                <Link className="hover:text-violet-800 capitalize" href={link.url}>
+                <Link
+                  className="hover:text-violet-800 capitalize"
+                  href={link.url}
+                >
                   {link.name}
                 </Link>
               </li>
             ))}
+            {user && <UserButton />}
           </ul>
           <div className=" block  float-right md:hidden">
             <Bars3BottomLeftIcon
