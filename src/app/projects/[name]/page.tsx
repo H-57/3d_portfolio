@@ -9,7 +9,7 @@ function page({params}:props) {
   
   <section className='relative h-screen w-full bg-[url("../assets/herobg.png")] bg-no-repeat bg-center bg-cover mx-auto'>
       <div className="pt-20"></div>
-  <div>{params.name}</div>
+ 
    <ProjectDetail/>
       </section>
   </>
