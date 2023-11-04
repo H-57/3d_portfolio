@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   const user=await currentUser();
  
   if(!user){
-    return NextResponse.json({ status: 401,message:"unauth" });
+    return NextResponse.json({ message:"unauth" },{ status: 401});
   }
 
   const { title, image, desc }: dataProps = await request.json();
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       message: "product created success",
       projectData,
-    });
+    },{ status: 201});
   }
 }
 
@@ -47,11 +47,11 @@ export async function PUT(request: Request) {
  
   if(!user){
    
-    return NextResponse.json({ status: 401,message:"unauth" });
+    return NextResponse.json({ message:"unauth" },{ status: 401});
   }
   dbConnection()
   const projectData=await Project.findByIdAndUpdate()
-  return NextResponse.json(projectData)
+  return NextResponse.json(projectData,{ status: 200})
 }
 
 export async function DELETE(request: Request) {
@@ -59,7 +59,7 @@ export async function DELETE(request: Request) {
  
   if(!user){
    
-    return NextResponse.json({ status: 401,message:"unauth" });
+    return NextResponse.json({message:"unauth" },{ status: 202});
   }
   dbConnection()
   const projectData=await Project.findByIdAndDelete()

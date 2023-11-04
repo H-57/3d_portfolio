@@ -14,7 +14,11 @@ return null;
     <>
 
  <Admin />
-    
+    <form action="/api/experience" method='POST' encType='multipart/form-data' className='pt-20'>
+      <input type="file" name="image" id="" />
+      <input type="text" name="name"/>
+      <button type="submit">submit</button>
+    </form>
     </>
   )
 }

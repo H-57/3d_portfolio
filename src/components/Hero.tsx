@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+
 import Computers from './canvas/Computers'
 import {motion}from "framer-motion"
 const Hero = () => {
