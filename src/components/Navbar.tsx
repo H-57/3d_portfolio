@@ -7,6 +7,7 @@ import { UserButton, useUser } from "@clerk/nextjs";
 
 const Navbar = () => {
   const { user } = useUser();
+  const [activeItem, setActiveItem] = useState<string>("");
   const [nav, setNav] = useState<String>("");
   const [scrollY, setscrollY] = useState<number>(10);
   const handleScroll = () => {
@@ -62,7 +63,8 @@ const Navbar = () => {
             {links.map((link) => (
               <li key={link.name}>
                 <Link
-                  className="hover:text-violet-800 capitalize"
+                onClick={()=>{setActiveItem(link.name)}}
+                  className={`hover:text-violet-800 capitalize ${activeItem===link.name?"text-violet-800":""}`}
                   href={link.url}
                 >
                   {link.name}

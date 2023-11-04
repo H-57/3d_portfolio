@@ -1,11 +1,24 @@
-import Admin from "@/components/Admin"
+
+import Admin from '@/components/Admin';
+import {currentUser} from '@clerk/nextjs';
 
 
-function page() {
+async function page() {
+
+  const user = await currentUser();
+
+  if (!user) {
+return null;
+  }
   return (
     <>
-    <Admin/>
-    
+
+ <Admin />
+    <form action="/api/experience" method='POST' encType='multipart/form-data' className='pt-20'>
+      <input type="file" name="image" id="" />
+      <input type="text" name="name"/>
+      <button type="submit">submit</button>
+    </form>
     </>
   )
 }

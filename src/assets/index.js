@@ -25,6 +25,9 @@ import graphql from "./tech/graphql.png"
 import aws from "./tech/aws.png"
 import nextjs from "./tech/nextjs.png"
 
+import linkedin from './tech/linked.png';
+import githublogo from './tech/github.png';
+
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
@@ -65,4 +68,5 @@ export {
   carrent,
   jobit,
   tripguide,
+  linkedin,githublogo
 };
