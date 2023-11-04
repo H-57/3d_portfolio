@@ -40,7 +40,7 @@ export async function POST(request:Request) {
   return NextResponse.json({ message: "created",result },{ status: 201});
   }
   } catch (error) {
-    return NextResponse.json({ error},{ status: 500});
+    return NextResponse.json({error: error},{ status: 400});
   }
   
 
