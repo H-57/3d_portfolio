@@ -1,5 +1,5 @@
 
-import { writeFile,unlink } from 'fs/promises';
+import { writeFile } from 'fs/promises'
 import {v2 as cloudinary} from 'cloudinary';
 
 
@@ -10,16 +10,30 @@ cloudinary.config({
   api_secret:process.env.api_secret
 });
 
-const fileUpload=async(file:File)=>{
-const byteData=await file.arrayBuffer();
+const fileUpload=async(file:any)=>{
+  
+    const byteData=await file.arrayBuffer();
 const buffer=await Buffer.from(byteData);
-let path=`./public/${file.name}`;
-console.log(path)
-await writeFile(path,buffer);
 
-const url= (await cloudinary.uploader.upload(path)).secure_url
-unlink(path);
-return url;
+let path=`/tmp/${file.name}`
+await writeFile(path, buffer)
+let imageUrl;
+//  cloudinary.uploader.upload_stream(
+//   { resource_type: 'auto' },
+//   async(error, result) => {
+//     if (error) {
+//       console.error('Error uploading to Cloudinary:', error);
+     
+//     } else {
+//      imageUrl=await result?.secure_url
+//      console.log(imageUrl,"in");
+//     }
+//   }
+// ).end(buffer);
+
+console.log(path)
+
+
 }
 
 

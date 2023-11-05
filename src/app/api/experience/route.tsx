@@ -33,14 +33,16 @@ export async function POST(request:Request) {
   const body=await request.formData();
   const file:any=await body.get('image');
  
-  if(file){
+ 
 
   const imageUrl=await  fileUpload(file);
-  const result=await ExperienceCard.create({test:"test",imageUrl});
-  return NextResponse.json({ message: "created",result },{ status: 201});
-  }
+
+  const result=await ExperienceCard.create({})
+
+  return NextResponse.json({ message: "created" },{ status: 201});
+  
   } catch (error) {
-    return NextResponse.json({ error},{ status: 500});
+    return NextResponse.error()
   }
   
 
