@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { dbConnection } from "../../utils/db/connection";
 import { ExperienceCard } from "../../utils/models/experienceCard";
 import { currentUser } from "@clerk/nextjs";
-import { fileUpload } from "@/app/utils/cloudnary/cloudnary";
+
 
 
 interface bodyProps {
@@ -11,10 +11,7 @@ interface bodyProps {
   date: String;
   points: [String];
 }
-interface result{
-  status:string;
-  message:string;
-}
+
 
 export async function GET(request: Request) {
   dbConnection();
@@ -30,17 +27,19 @@ export async function POST(request:Request) {
   }
   try {
     dbConnection();
-  const body=await request.formData();
-  const file:any=await body.get('image');
+  const body=await request.json();
  
-  if(file){
 
-  const imageUrl=await  fileUpload(file);
-  const result=await ExperienceCard.create({test:"test",imageUrl});
-  return NextResponse.json({ message: "created",result },{ status: 201});
-  }
+  const result=await ExperienceCard.create({})
+
+  return NextResponse.json({ message: "created" ,success:"true"},{ status: 201});
+  
   } catch (error) {
+<<<<<<< HEAD
     return NextResponse.json({error: error},{ status: 400});
+=======
+    return NextResponse.error()
+>>>>>>> clerkAuth
   }
   
 

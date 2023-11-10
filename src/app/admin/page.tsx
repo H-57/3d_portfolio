@@ -1,7 +1,8 @@
 
 import Admin from '@/components/Admin';
 import {currentUser} from '@clerk/nextjs';
-
+import Sidebar from '@/components/Admin/Sidebar'
+import Main from '@/components/Admin/Main';
 
 async function page() {
 
@@ -12,13 +13,12 @@ return null;
   }
   return (
     <>
-
- <Admin />
-    <form action="/api/experience" method='POST' encType='multipart/form-data' className='pt-20'>
-      <input type="file" name="image" id="" />
-      <input type="text" name="name"/>
-      <button type="submit">submit</button>
-    </form>
+<div className="pt-36"></div>
+ <section className='grid grid-cols-5 border h-[100vh] box-border'>
+<Sidebar  />
+<Main/>
+ </section>
+  
     </>
   )
 }

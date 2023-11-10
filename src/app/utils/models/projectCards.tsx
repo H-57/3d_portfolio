@@ -9,6 +9,7 @@ title:{
     type:String,
     require:[true,"please provide title"]
 },
+tech:String,
 desc:{
     type:String,
     require:[true,"please provide description"]
