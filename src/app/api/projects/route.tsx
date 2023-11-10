@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     dbConnection();
   
 
-    const projectData = await Project.create({ title, tech, desc });
+    const projectData = await Project.create({ title, tech, desc,image });
     return NextResponse.json(
       {
         message: "project created success",
