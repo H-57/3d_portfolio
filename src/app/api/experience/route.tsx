@@ -35,11 +35,7 @@ export async function POST(request:Request) {
   return NextResponse.json({ message: "created" ,success:"true"},{ status: 201});
   
   } catch (error) {
-<<<<<<< HEAD
-    return NextResponse.json({error: error},{ status: 400});
-=======
     return NextResponse.error()
->>>>>>> clerkAuth
   }
   
 
