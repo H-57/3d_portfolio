@@ -1,24 +1,39 @@
 "use client"
+
+import { getUrl } from '@/app/utils/serverActions/imageUpload';
 import React from 'react'
 import { useForm } from "react-hook-form";
-function ProjectPage() {
-   
+import { toast } from 'react-toastify';
 
+function ProjectPage() {
+  
     const { register, handleSubmit } = useForm();
 
 
     const onSubmit = async(data:any) => {
-        console.log(data)
-        let formData=new FormData()
-        formData.append("title",data.title)
-        formData.append("desc",data.desc)
-        formData.append("tech",data.tech)
-        formData.append("image",data.image?.[0])
-const result=await fetch("/api/projects",{
+// console.log(data);
+
+let image= new FormData()
+await image.append("image",data.image?.[0])
+const imageUrl=await getUrl(image)
+
+
+      
+  
+       let formData=await {...data,image:imageUrl}
+   
+       console.log(formData,"formdata");
+        
+const result=await(await fetch("/api/projects",{
     method:"post",
-    body:formData
-})
-console.log(result)
+    body:JSON.stringify(formData)
+})).json()
+
+console.log(result.success)
+if(result.success=="true"){
+  toast(result.message)
+}
+
 
     }
 

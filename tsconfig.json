@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/constant.js", "src/components/Contact.jx", "src/components/canvas/Stars.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/constant.js", "src/components/Contact.jx", "src/components/canvas/Stars.jsx", "src/app/utils/firebase/app.jsx"],
   "exclude": ["node_modules"]
 }
