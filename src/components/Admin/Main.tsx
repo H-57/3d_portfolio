@@ -1,10 +1,20 @@
+"use client"
+
+
 import React from 'react'
-import ProjectPage from './ProjectPage'
+import ExperiencePage from './ExperiencePage'
+import { useNavContext } from '@/context/sidebar/SidebarContext';
+import ProjectPage from './ProjectPage';
+
 
 function Main() {
+const{nav}:any=useNavContext();
+
   return (
     <div className='col-span-4 border'>
-<ProjectPage/>
+      {(nav=="Experience")?<ExperiencePage/>:(nav=="Projects")?<ProjectPage/>:null}
+      
+
 
     </div>
   )

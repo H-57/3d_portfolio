@@ -1,10 +1,13 @@
 "use client";
+import { useNavContext } from "@/context/sidebar/SidebarContext";
+import Link from "next/link";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState,  } from "react";
 
 const list: String[] = ["Home", "Experience", "Projects"];
 function Sidebar() {
-  const [navList, setNavList] = useState<String>("Home");
+  const {nav,setNav}:any=useNavContext()
+ 
   return (
     <>
       <div className=" col-span-1 border bg-[#100d25]">
@@ -13,15 +16,19 @@ function Sidebar() {
         </h2>
         <ul className="mx-auto w-[90%] mt-5  rounded-lg h-[80%]">
           {list.map((elm, index) => (
+            
+      
             <li
-              key={index}
-              onClick={() => setNavList(elm)}
+            key={index}
+            onClick={() => setNav(elm)}
               className={` rounded-xl text-center hover:text-violet-600 mt-5 w-[80%] mx-auto hover:bg-purple-300 ${
-                navList === elm ? "bg-purple-500" : ""
+                nav === elm ? "bg-purple-500" : ""
               }`}
             >
               {elm}
             </li>
+                  
+           
           ))}
         </ul>
       </div>

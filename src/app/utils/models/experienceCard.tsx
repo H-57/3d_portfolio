@@ -5,7 +5,7 @@ const experienceCardSchema=new mongoose.Schema({
     type:String,
    
 },
-projectName:{
+title:{
     type:String,
     require:true
 },

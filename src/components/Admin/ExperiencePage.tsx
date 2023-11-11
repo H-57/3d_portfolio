@@ -1,17 +1,14 @@
 "use client"
 
 import { getUrl } from '@/app/utils/serverActions/imageUpload';
-import React, { useEffect,useState } from 'react'
+import React from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import Tabel from './Tabel';
 
-const head=["title","link","image","edit","delete"]
-
-function ProjectPage({id}:{id?:String}) {
-
-
+function ExperiencePage({id}:{id?:String}) {
   let reqMethod="post";
+
     const { register, handleSubmit } = useForm();
 
 
@@ -25,32 +22,32 @@ const imageUrl=await getUrl(image)
 
       
   
-       let formData=await {...data,image:imageUrl}
+       let formData=await {...data,icon:imageUrl,image:""}
+   
+       console.log(formData,"formdata");
        if(id){
         reqMethod="put";
          formData=await {...formData,id}
       }
-       console.log(formData,"formdata");
-        
-const result=await(await fetch("/api/projects",{
-    method:"post",
+const result=await(await fetch("/api/experience",{
+    method:reqMethod,
     body:JSON.stringify(formData)
 })).json()
 
 console.log(result.success)
 if(result.success=="true"){
   toast.success(result.message)
-}else{
+}
+else{
   toast.error(result.message)
 }
-
 
     }
 
 
   return (
     <div className='h-[100vh] overflow-y-scroll'>
-<h1 className='md:text-5xl font-semibold text-center mb-10'>Projects Page</h1>
+<h1 className='md:text-5xl font-semibold text-center mb-10'>Experience Page</h1>
 
 <form onSubmit={handleSubmit(onSubmit)}>
   <div className="grid gap-6 mb-6 md:grid-cols-2">
@@ -59,29 +56,21 @@ if(result.success=="true"){
       <input type="text" id="title" {...register("title")}className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="enter title here" required />
     </div>
     <div>
-      <label htmlFor="tech_stack" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tech Stack</label>
-      <input type="text" id="tech_stack"{...register("tech")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="next,react," required />
+      <label htmlFor="tech_stack" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Project Name</label>
+      <input type="text" id="tech_stack"{...register("company")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ecommapp" required />
     </div>
-    <div>
-      <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github url</label>
-      <input type="text" id="title" {...register("github")}className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="github url" required />
-    </div>
-    <div>
-      <label htmlFor="tech_stack" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Live Url</label>
-      <input type="text" id="tech_stack"{...register("live")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Live Url" required />
-    </div>
+  
     <div>
       <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
       <textarea rows={6}  id="description" {...register("desc")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="desc" required />
     </div>  
    
    
+    <div>
+      <label htmlFor="date" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
+      <input type="text" id="date"{...register("date")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" july 2023" required />
+    </div>
 
-<select id="Category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:ring-blue-500 focus:border-blue-500 block w-[50%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-fit">
-  <option defaultValue="Personal">Personal</option>
-  <option value="Assignments">Assignments</option>
-  
-</select>
 
    
   </div>
@@ -103,11 +92,10 @@ if(result.success=="true"){
 
 
 
-<Tabel  head={head} fields={["title","live"]}/>
 
+<Tabel head={["Title","Company","icon","edit","delete"]} fields={["title","Company"]} />
     </div>
   )
-  
 }
 
-export default ProjectPage
+export default ExperiencePage

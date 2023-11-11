@@ -5,11 +5,14 @@ image:{
     type:String,
    
 },
+live:String,
+github:String,
 title:{
     type:String,
     require:[true,"please provide title"]
 },
-tech:String,
+type:String,
+tech:[String],
 desc:{
     type:String,
     require:[true,"please provide description"]

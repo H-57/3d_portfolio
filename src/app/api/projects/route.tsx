@@ -12,6 +12,9 @@ interface dataProps {
   tech: String;
   title: String;
   image: String;
+  type:String;
+  github:String;
+  live:String;
 }
 export async function GET(request: Request) {
   await dbConnection();
@@ -27,7 +30,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "unauth" }, { status: 401 });
   }
 
- const {title,tech,desc,image}:dataProps=await request.json();
+ const {title,tech,desc,image,type,github,live}:dataProps=await request.json();
   if (!title || !desc||!tech||!image) {
     return NextResponse.json({
       message: "please fill all fields",
@@ -35,9 +38,9 @@ export async function POST(request: Request) {
     });
   } else {
     dbConnection();
-  
+  let techArray=tech.split(";");
 
-    const projectData = await Project.create({ title, tech, desc,image });
+    const projectData = await Project.create({ title, tech:techArray, desc,image ,type,github,live});
     return NextResponse.json(
       {
         message: "project created success",

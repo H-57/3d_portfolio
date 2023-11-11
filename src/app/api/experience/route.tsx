@@ -6,10 +6,11 @@ import { currentUser } from "@clerk/nextjs";
 
 
 interface bodyProps {
-  projectName: String;
+  title: String;
   company: String;
   date: String;
-  points: [String];
+  desc: String;
+  icon: String;
 }
 
 
@@ -27,15 +28,15 @@ export async function POST(request:Request) {
   }
   try {
     dbConnection();
-  const body=await request.json();
+  const {title,company,icon,date,desc}:bodyProps=await request.json();
  
-
-  const result=await ExperienceCard.create({})
+let points=desc.split(";");
+  const result=await ExperienceCard.create({title,company,icon,date,points})
 
   return NextResponse.json({ message: "created" ,success:"true"},{ status: 201});
   
   } catch (error) {
-    return NextResponse.error()
+    return NextResponse.json({success:"false",message:error})
   }
   
 
