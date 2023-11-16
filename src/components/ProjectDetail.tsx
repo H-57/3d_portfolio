@@ -1,14 +1,35 @@
+"use client"
+
 import { carrent, githublogo, linkedin } from "@/assets";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-function ProjectDetail() {
+interface dataProps{
+  title:string
+  image:string
+  desc:string
+  github:string
+  live:string
+  tech:string[]
+
+}
+
+
+function ProjectDetail({name}:{name:string}) {
+  const [Data, setData] = useState<dataProps>()
+  useEffect(() => {
+   fetch(`/api/projects/${name.replaceAll("-"," ")}`).then((res)=>res.json()).then((data)=>setData(data))
+  
+    
+  }, [])
+  
   return (
     <>
       <div id="main" className="mx-10 mt-5 mb-5 rounded-xl bg-[#2e0679] p-10">
         <div className="bg-[#a266fc] rounded-md">
           <h1 className=" capitalize ml-5 p-2 text-4xl font-bold text-white">
-            title
+          {Data?.title}
           </h1>
         </div>
 
@@ -17,7 +38,7 @@ function ProjectDetail() {
             <Image
               height={500}
               width={500}
-              src={carrent}
+              src={Data?.image!}
               alt="image"
               className="h-full w-full rounded-md"
             />
@@ -25,8 +46,8 @@ function ProjectDetail() {
           <div id="details" className=" w-[40%] h-[500px] bg-white rounded-md mr-5">
 <section>
   <h2 className="text-3xl font-bold text-violet-700">Key Features</h2>
-  <h3 className="font-semibold text-violet-900 mt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias repudiandae deserunt vero minima distinctio accusantium sed, sint, fugiat, earum necessitatibus adipisci laborum rem corrupti voluptates a tempora commodi iure? Eveniet.</h3>
-  <ul className="text-blue-600 flex flex-col gap-5 mt-5 list-disc p-5">
+  <h3 className="font-semibold text-violet-900 mt-3">{Data?.desc}</h3>
+  <ul className="text-blue-600 flex flex-col gap-5 mt-5 list-disc px-5">
     <li>     Developing and maintaining web applications using Next .js,React.js and other related technologies. </li>
 <li>Implementing responsive design and ensuring cross-browser compatibility.</li>
 <li>using react tabel for frontend validation and tailwind css for css.</li>
@@ -62,26 +83,25 @@ function ProjectDetail() {
             </a>
           </div>
           <div className=" col-span-4 flex flex-col gap-y-2 items-center justify-center border-4 border-transparent border-x-[#2e0679]">
-            <button className="flex justify-center items-center p-2 bg-white text-violet-700 font-bold capitalize rounded-xl hover:bg-violet-700 hover:text-white w-[80%]">
+            <a href={Data?.github} target="_blank"  className="flex justify-center items-center p-2 bg-white text-violet-700 font-bold capitalize rounded-xl hover:bg-violet-700 hover:text-white w-[80%]">
+          
               <span>github</span>
               <img src="/github.svg" alt="logo" className="w-fit ml-1" />
-            </button>
+            </a>
+           
 
-            <button className="flex justify-center items-center p-2 bg-white text-violet-700 font-bold capitalize rounded-xl hover:bg-violet-700 hover:text-white w-[80%]">
+            <a href={Data?.live} target="_blank" className="flex justify-center items-center p-2 bg-white text-violet-700 font-bold capitalize rounded-xl hover:bg-violet-700 hover:text-white w-[80%]">
               <span>liveurl</span>
               <img src="/url.gif" alt="logo" className="w-fit h-8 ml-1" />
-            </button>
+            </a>
           </div>
           <div className=" col-span-3  ">
             <h4 className="font-semibold ml-5 text-xl">Techstack</h4>
             <div className=" bg-[#a266fc] mx-5 w-[90%] h-[80%] rounded-xl ">
               <ul className="text-xl font-semibold flex flex-wrap text-white   capitalize  pt-5  ">
-                <li className="w-[40%] ml-3 ">rect</li>
-                <li className="w-[40%] ml-3 ">rect</li>
-                <li className="w-[40%] ml-3 ">rect</li>
-                <li className="w-[40%] ml-3 ">rect</li>
-                <li className="w-[40%] ml-3 ">rect</li>
-                <li className="w-[40%] ml-3 ">rect</li>
+                {Data?.tech.map((elm,index)=> <li key={index} className="w-[40%] ml-3 ">{elm}</li>)}
+               
+                
               </ul>
             </div>
           </div>

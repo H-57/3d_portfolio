@@ -1,7 +1,7 @@
 "use client";
 import { Tilt } from "react-tilt";
-import { projects } from "./constant";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -17,7 +17,7 @@ interface props {
 const ProjectCards = ({ image, title, desc, tech, url }: props) => {
   return (
     <>
-      <Link href={url}>
+      <Link href={`/projects/${url?.replaceAll(" ", "-")}`}>
         <Tilt className="shadow-[gray_0px_0px_100px_-50px] rounded-3xl md:w-[300px]  w-[220px]  p-[2px] bg-gradient-to-r from-blue-600 to-pink-700">
           <div className=" p-1 bg-[#151030] rounded-3xl ">
             <Image
@@ -28,14 +28,14 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
               className="rounded-md w-[90%] h-[60%] m-auto mt-3"
             />
             <h2 className=" mt-5 m-3 font-semibold text-2xl">{title}</h2>
-            <h3 className="m-3 text-sm font-semibold">{desc}</h3>
-            <span className="m-3 text-[1.2rem] text-blue-500  ">
+            <h3 className="m-3 text-sm font-semibold">{desc.slice(0, 230)}...</h3>
+            <span className="m-3 text-[1.2rem] text-blue-500 capitalize">
               #{tech[0]}
             </span>
-            <span className="m-1 text-[1.2rem] text-green-500 ">
+            <span className="m-1 text-[1.2rem] text-green-500 capitalize">
               #{tech[1]}
             </span>
-            <span className="m-1 text-[1.2rem] text-pink-500">#{tech[2]}</span>
+            <span className="m-1 text-[1.2rem] text-pink-500 capitalize">#{tech[2]}</span>
           </div>
         </Tilt>
       </Link>
@@ -45,6 +45,18 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
 
 
 function Projects() {
+  const [Data, setData] = useState<any[]>()
+  useEffect(() => {
+    fetch(`/api/projects`).then((res) => res.json()).then((data) => setData(data))
+
+
+  }, [])
+  let filterData = Data?.filter((elm, index) => {
+    if (elm.category == "p") {
+      return elm
+    }
+  })
+  console.log(filterData,"filterData")
   const [activeItem, setActiveItem] = useState<string>("all");
 
   const items = [
@@ -53,7 +65,7 @@ function Projects() {
     { id: 'assignments', text: 'Assignments' },
   ];
 
-  const handleItemClick = (itemId:string) => {
+  const handleItemClick = (itemId: string) => {
     setActiveItem(itemId);
   };
 
@@ -65,23 +77,27 @@ function Projects() {
         </h1>
         <div className="mt-5 mb-10 ">
           <ul className="flex gap-5 w-fit m-auto ">
-          {items.map((item)=><li key={item.id}     
-            onClick={() => handleItemClick(item.id)} className={`text-xl font-semibold hover:text-violet-600 cursor-pointer ${activeItem===item.id?'text-violet-600':""}`}>{item.text}</li>)}
-            
+            {items.map((item) => <li key={item.id}
+              onClick={() => handleItemClick(item.id)} className={`text-xl font-semibold hover:text-violet-600 cursor-pointer ${activeItem === item.id ? 'text-violet-600' : ""}`}>{item.text}</li>)}
+
           </ul>
         </div>
 
         {/* project cards */}
-        {projects.map((elm, index) => (
-          <ProjectCards
-            key={index}
-            image={elm.image}
-            desc={elm.desc}
-            title={elm.title}
-            tech={elm.tech}
-            url={elm.url}
-          />
-        ))}
+        <section className="flex gap-5">
+
+
+          {Data?.map((elm, index) => (
+            <ProjectCards
+              key={index}
+              image={elm.image}
+              desc={elm.desc}
+              title={elm.title}
+              tech={elm.tech}
+              url={elm.title}
+            />
+          ))}
+        </section>
       </div>
     </section>
   );

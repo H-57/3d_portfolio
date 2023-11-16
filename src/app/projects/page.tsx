@@ -2,11 +2,13 @@ import Projects from '@/components/Projects'
 
 
 
-function page() {
+async function page() {
+ 
+
   return (
-    // <Projects />
     
-<Projects/>
+    
+<Projects />
       
   
   )
