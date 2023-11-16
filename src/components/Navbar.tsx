@@ -71,6 +71,7 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
+            <a href="https://res.cloudinary.com/dahc9q7hs/image/upload/fl_attachment/v1/resume/fullstack"  className=" bg-white text-violet-700 font-bold capitalize rounded-xl h-8 hover:bg-violet-700 hover:text-white w-[80%]">Resume</a>
             {user && <UserButton />}
           </ul>
           <div className=" block  float-right md:hidden">

@@ -4,6 +4,7 @@ interface props{
     params: { name: string } 
 }
 
+
 function page({params}:props) {
   return (<>
   

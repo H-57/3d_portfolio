@@ -1,11 +1,30 @@
 "use client";
 
 import React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 import SectionWrapper from "./hoc/SectionWrapper";
 import Earth from "./canvas/Earth";
 import StarsCanvas from "./canvas/Stars";
 import { motion } from "framer-motion";
 const Contact = () => {
+  const { register, handleSubmit ,reset} = useForm();
+  async function formSubmit(data:any){
+
+    const result=await(await fetch("/api/email",{
+      method:"post",
+      body:JSON.stringify(data)
+  })).json()
+  
+  console.log(result.success)
+  if(result.success=="true"){
+    toast.success(result.message)
+    reset()
+  }
+  else{
+    toast.error(result.message)
+  }
+  }
   return (
     <>
       <div className="flex flex-col md:flex-row-reverse relative">
@@ -24,28 +43,30 @@ const Contact = () => {
         >
           <p className="pt-5 capitalize">get in touch</p>
           <h3 className=" text-3xl md:text-6xl font-extrabold ">Contact</h3>
-          <form className="w-[100%] mt-10" action="">
+          <form className="w-[100%] mt-10" onSubmit={handleSubmit(formSubmit)}>
             <label className="" htmlFor="name">
               Your Name
             </label>
             <input
               className="outline-none bg-[#151030] block w-full h-10 rounded-md mt-5 mb-5"
-              name="name"
+              {...register("name")}
               type="text"
+              required
             />
             <label htmlFor="email">Your Email</label>
             <input
               className="outline-none bg-[#151030] block w-full h-10 rounded-md mt-3 mb-5"
-              name="email"
+            {...register("email")}
               type="email"
             />
             <label htmlFor="des">Your Mesage</label>
             <textarea
               className="outline-none bg-[#151030] block w-full  rounded-md mt-5 "
               rows={7}
-              name="des"
+              required
+              {...register("message")}
             />
-            <button className="bg-[#151030] text-xl font-semibold p-4 my-5 min-w-[100px] rounded-lg hover:bg-[#17113c]">
+            <button type="submit" className="bg-[#151030] text-xl font-semibold p-4 my-5 min-w-[100px] rounded-lg hover:bg-[#17113c]">
               Send
             </button>
           </form>

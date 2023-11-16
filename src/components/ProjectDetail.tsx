@@ -12,7 +12,7 @@ function ProjectDetail() {
           </h1>
         </div>
 
-        <div className="flex flex-row-reverse   h-auto">
+        <div className="flex flex-row-reverse   h-auto m-3">
           <div id="image" className=" w-[60%] h-[500px]">
             <Image
               height={500}
@@ -22,7 +22,21 @@ function ProjectDetail() {
               className="h-full w-full rounded-md"
             />
           </div>
-          <div id="details" className=" w-[40%] h-[500px]"></div>
+          <div id="details" className=" w-[40%] h-[500px] bg-white rounded-md mr-5">
+<section>
+  <h2 className="text-3xl font-bold text-violet-700">Key Features</h2>
+  <h3 className="font-semibold text-violet-900 mt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias repudiandae deserunt vero minima distinctio accusantium sed, sint, fugiat, earum necessitatibus adipisci laborum rem corrupti voluptates a tempora commodi iure? Eveniet.</h3>
+  <ul className="text-blue-600 flex flex-col gap-5 mt-5 list-disc p-5">
+    <li>     Developing and maintaining web applications using Next .js,React.js and other related technologies. </li>
+<li>Implementing responsive design and ensuring cross-browser compatibility.</li>
+<li>using react tabel for frontend validation and tailwind css for css.</li>
+  
+   
+    <li>    use of redux toolkit for manage global level state.</li>
+  </ul>
+</section>
+
+          </div>
         </div>
         <div id="footer" className=" grid grid-cols-9 bg-[#401599] h-[200px]  ">
           <div className=" col-span-2  flex justify-center items-center  ">
@@ -31,7 +45,7 @@ function ProjectDetail() {
               className="w-[40%] h-[40%] cursor-pointer"
               target="_blank"
             >
-              <Image height={400} width={400} src={linkedin} alt="linkedin" />
+              <Image className="hover:scale-125 transition-all" height={400} width={400} src={linkedin} alt="linkedin" />
             </a>
             <a
               href="https://github.com/H-57"
@@ -39,6 +53,7 @@ function ProjectDetail() {
               target="_blank"
             >
               <Image
+              className="hover:scale-125 transition-all"
                 height={400}
                 width={400}
                 src={githublogo}

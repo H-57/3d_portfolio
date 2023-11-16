@@ -4,20 +4,20 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { experiences } from "./constant";
+
 import Image, { StaticImageData } from "next/image";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef ,useState} from "react";
 import { once } from "events";
 interface Card {
-  projectName: string;
+  title: string;
   company: string;
   icon: StaticImageData;
   points: string[];
   date:string;
 }
 
-function CardDetail({ icon, projectName, points, company,date }: Card) {
+function CardDetail({ icon, title, points, company,date }: Card) {
   const ref = useRef(null);
   const IsInView = useInView(ref);
   const animator = useAnimation();
@@ -73,7 +73,7 @@ function CardDetail({ icon, projectName, points, company,date }: Card) {
           transition={{ duration: 0.7, delay: 0.5 }}
           animate={animator}
         >
-          <h2 className="sm:!text-2xl md:!text-5xl !text-white capitalize font-semibold">{projectName}</h2>
+          <h2 className="sm:!text-2xl md:!text-5xl !text-white capitalize font-semibold">{title}</h2>
           <h3 className="text-2xl uppercase">{company}</h3>
           <ul className=" list-disc flex my-7 flex-col">
             {points.map((point, index) => (
@@ -89,13 +89,22 @@ function CardDetail({ icon, projectName, points, company,date }: Card) {
 }
 
 const Experience: React.FunctionComponent = () => {
+  const [experiences, setExperiences] = useState<Card[]>([]);
+  useEffect(()=>{
+    fetch("/api/experience").then(res=>res.json()).then(data=>{
+      
+      setExperiences(data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  },[])
   return (
     <>
       <VerticalTimeline>
         {experiences.map((elm, index) => (
           <CardDetail
             key={index}
-            projectName={elm.projectName}
+            title={elm.title}
             company={elm.company}
             icon={elm.icon}
             points={elm.points}

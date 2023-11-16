@@ -9,10 +9,17 @@ import Tabel from './Tabel';
 const head=["title","link","image","edit","delete"]
 
 function ProjectPage({id}:{id?:String}) {
+if(id){
+  fetch(`/api/projects`).then(res=>res.json()).then(data=>{
+    setValue("title",data.title);
+    setValue("link",data.link);
+    setValue("image",data.image);
 
+  })
+}
 
   let reqMethod="post";
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,setValue } = useForm();
 
 
     const onSubmit = async(data:any) => {
@@ -77,7 +84,7 @@ if(result.success=="true"){
    
    
 
-<select id="Category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:ring-blue-500 focus:border-blue-500 block w-[50%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-fit">
+<select id="Category"{...register("category")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:ring-blue-500 focus:border-blue-500 block w-[50%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 h-fit">
   <option defaultValue="Personal">Personal</option>
   <option value="Assignments">Assignments</option>
   
@@ -103,7 +110,7 @@ if(result.success=="true"){
 
 
 
-<Tabel  head={head} fields={["title","live"]}/>
+<Tabel  head={head} fields={["title","live"]} fetchData="projects"/>
 
     </div>
   )

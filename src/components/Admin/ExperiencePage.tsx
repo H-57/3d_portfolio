@@ -93,7 +93,7 @@ else{
 
 
 
-<Tabel head={["Title","Company","icon","edit","delete"]} fields={["title","Company"]} />
+<Tabel head={["Title","Company","icon","edit","delete"]} fields={["title","company"]} fetchData="experience" />
     </div>
   )
 }

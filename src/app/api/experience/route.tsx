@@ -58,10 +58,11 @@ export async function DELETE(request: Request) {
   const user = await currentUser();
 
   if (!user) {
-    return NextResponse.json({  message: "unauth" },{status:401});
+    return NextResponse.json({  message: "unauth",success:"false" },{status:401});
   }
+  const{id}=await request.json()
   dbConnection();
  
-  const result = await ExperienceCard.findByIdAndDelete();
-  return NextResponse.json(result,{status:200});
+  const result = await ExperienceCard.findByIdAndDelete(id);
+  return NextResponse.json({message:"deleted",success:"true"},{status:200});
 }

@@ -2,34 +2,44 @@
 import React, { useState } from "react";
 import {PencilSquareIcon,TrashIcon}from "@heroicons/react/24/solid"
 import Image from "next/image";
+import { toast } from "react-toastify";
 interface headProps {
   head: string[];
   fields: string[];
+  fetchData: string;
 }
 
-function Tabel({ head, fields }: headProps) {
-  const [data, setData] = useState([
-    {
-      _id: "654f6faf0f7e47691dd83d9f",
-      image:
-        "https://res.cloudinary.com/dahc9q7hs/image/upload/v1699689490/portfolio/zteliapyiofwntbznion.webp",
-      live: "fdg",
-      github: "dfg",
-      title: "cvx",
-      tech: ["fdg"],
-      desc: "fgd",
-      __v: 0,
-    },
-  ]);
-  // useEffect(()=>{
-  //   fetch("/api/projects").then(res=>res.json()).then(data=>{
-  //     setData(data)
-  //   })
-  // },[])
+function Tabel({ head, fields,fetchData }: headProps) {
+  const [data, setData] = useState<Array<any>>();
+
+  React.useEffect(()=>{
+    fetch(`/api/${fetchData}`).then(res=>res.json()).then(data=>{
+      setData(data)
+    })
+  },[fetchData])
+
+  async function deleteEntry(id:string) {
+    let desicion=confirm("are you sure to delete this entry?");
+    if(desicion){
+     const response= await fetch(`/api/${fetchData}`,{
+        method:"delete",
+        body:JSON.stringify({id}),
+      })
+      response.json().then(data=>{
+        if(data?.success=="false"){
+          toast.error(data.message)
+        }else{
+
+          toast.success(data.message)
+         
+        }
+      })
+    }
+  }
 
   return (
     <>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10">
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-10 mx-3">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -52,9 +62,9 @@ function Tabel({ head, fields }: headProps) {
                   </td>
                   
                 ))}
-               <td className="px-6 py-4"><Image className="w-6 h-6" src={(item.image)?item.image:item.icon} alt="image" width={100} height={100}/></td> 
-                <td className="px-6 py-4"><PencilSquareIcon className="w-6 h-6 text-blue-500"/></td>
-                <td className="px-6 py-4"><TrashIcon className="w-6 h-6 text-red-500"/></td>
+               {(item.image||item.icon)&&<td className="px-6 py-4"><Image className="w-6 h-6" src={(item.image)?item.image:item.icon} alt="image" width={100} height={100}/></td> }
+               {head.includes("edit")&& <td className="px-6 py-4"><PencilSquareIcon className="w-6 h-6 cursor-pointer text-blue-500"/></td>}
+                <td onClick={()=>deleteEntry(item._id)} className="px-6 py-4"><TrashIcon className="w-6 h-6 text-red-500 cursor-pointer"/></td>
               </tr>
             ))}
 
