@@ -1,6 +1,6 @@
 "use client"
 
-import { carrent, githublogo, linkedin } from "@/assets";
+import { githublogo, linkedin } from "@/assets";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
