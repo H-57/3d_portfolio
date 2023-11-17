@@ -1,10 +1,10 @@
 import React from 'react'
 import Tabel from './Tabel'
 
-function Home() {
+function Email() {
   return (
    <Tabel head={["Name","Email","Message","Delete"]} fields={["name","email","message"]} fetchData="email"/>
   )
 }
 
-export default Home
+export default Email

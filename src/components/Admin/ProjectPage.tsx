@@ -9,21 +9,41 @@ import Tabel from './Tabel';
 const head=["title","link","image","edit","delete"]
 
 function ProjectPage({id}:{id?:String}) {
-if(id){
-  fetch(`/api/projects`).then(res=>res.json()).then(data=>{
-    setValue("title",data.title);
-    setValue("link",data.link);
-    setValue("image",data.image);
+  const { register, handleSubmit,setValue } = useForm();
+  const [existData, setExistData] = useState<any>()
+useEffect(()=>{
+  if(id){
+    fetch(`/api/projects/${id}`).then(res=>res.json()).then(data=>{
+      setExistData(data)
+      
+  
+    })
+  }
+},[])
 
-  })
+
+if(existData){
+  setValue("title",existData?.title);
+  setValue("tech",existData?.tech.join(";"));
+  setValue("github",existData?.github);
+  setValue("live",existData?.live);
+  setValue("desc",existData?.desc);
+  setValue("points",existData?.points.join(";"));
+  setValue("category",existData?.category);
+ 
+
 }
 
+
+
+
   let reqMethod="post";
-    const { register, handleSubmit,setValue } = useForm();
+    
 
 
     const onSubmit = async(data:any) => {
 // console.log(data);
+
 
 let image= new FormData()
 await image.append("image",data.image?.[0])
@@ -35,12 +55,15 @@ const imageUrl=await getUrl(image)
        let formData=await {...data,image:imageUrl}
        if(id){
         reqMethod="put";
-         formData=await {...formData,id}
+        if(!imageUrl){
+          formData=await {...formData,image:existData?.image}
+        }
+        
       }
        console.log(formData,"formdata");
         
 const result=await(await fetch("/api/projects",{
-    method:"post",
+    method:reqMethod,
     body:JSON.stringify(formData)
 })).json()
 
@@ -67,7 +90,7 @@ if(result.success=="true"){
     </div>
     <div>
       <label htmlFor="tech_stack" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tech Stack</label>
-      <input type="text" id="tech_stack"{...register("tech")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="next;react;" required />
+      <input type="text" id="tech_stack"{...register("tech")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="next;react;  seprate by ;" required />
     </div>
     <div>
       <label htmlFor="title" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github url</label>
@@ -79,7 +102,11 @@ if(result.success=="true"){
     </div>
     <div>
       <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">description</label>
-      <textarea rows={6}  id="description" {...register("desc")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="desc" required />
+      <textarea rows={6}  id="description" {...register("desc",{maxLength:320})} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="desc" required />
+    </div>  
+    <div>
+      <label htmlFor="Points" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Points</label>
+      <textarea rows={6}  id="Points" {...register("points")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="points seprate by ;" required />
     </div>  
    
    

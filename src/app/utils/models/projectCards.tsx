@@ -11,7 +11,7 @@ title:{
     type:String,
     require:[true,"please provide title"]
 },
-type:String,
+points:[String],
 category:String,
 tech:[String],
 desc:{

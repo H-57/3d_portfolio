@@ -12,6 +12,8 @@ interface dataProps{
   github:string
   live:string
   tech:string[]
+  points:string[]
+
 
 }
 
@@ -48,12 +50,7 @@ function ProjectDetail({name}:{name:string}) {
   <h2 className="text-3xl font-bold text-violet-700">Key Features</h2>
   <h3 className="font-semibold text-violet-900 mt-3">{Data?.desc}</h3>
   <ul className="text-blue-600 flex flex-col gap-5 mt-5 list-disc px-5">
-    <li>     Developing and maintaining web applications using Next .js,React.js and other related technologies. </li>
-<li>Implementing responsive design and ensuring cross-browser compatibility.</li>
-<li>using react tabel for frontend validation and tailwind css for css.</li>
-  
-   
-    <li>    use of redux toolkit for manage global level state.</li>
+ {Data?.points?.map((elm,index)=> <li key={index} >{elm}</li>)}
   </ul>
 </section>
 
@@ -96,7 +93,7 @@ function ProjectDetail({name}:{name:string}) {
             </a>
           </div>
           <div className=" col-span-3  ">
-            <h4 className="font-semibold ml-5 text-xl">Techstack</h4>
+            <h4 className="font-semibold ml-5 text-xl">Techstack Used</h4>
             <div className=" bg-[#a266fc] mx-5 w-[90%] h-[80%] rounded-xl ">
               <ul className="text-xl font-semibold flex flex-wrap text-white   capitalize  pt-5  ">
                 {Data?.tech.map((elm,index)=> <li key={index} className="w-[40%] ml-3 ">{elm}</li>)}

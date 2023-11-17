@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Bars3BottomLeftIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { UserButton, useUser } from "@clerk/nextjs";
+import { link } from "fs";
 
 const Navbar = () => {
   const { user } = useUser();
@@ -73,6 +74,8 @@ const Navbar = () => {
             ))}
             <a href="https://res.cloudinary.com/dahc9q7hs/image/upload/fl_attachment/v1/resume/fullstack"  className=" bg-white text-violet-700 font-bold capitalize rounded-xl h-8 hover:bg-violet-700 hover:text-white w-[80%]">Resume</a>
             {user && <UserButton />}
+            {user && <Link href={"/admin"}>admin</Link>}
+            
           </ul>
           <div className=" block  float-right md:hidden">
             <Bars3BottomLeftIcon
@@ -102,7 +105,9 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               </li>
-            ))}
+           
+           ))}
+           <a href="https://res.cloudinary.com/dahc9q7hs/image/upload/fl_attachment/v1/resume/fullstack"  className=" bg-white text-violet-700 font-bold capitalize rounded-xl h-8 hover:bg-violet-700 hover:text-white w-[80%]">Resume</a>
           </ul>
         </div>
       </nav>

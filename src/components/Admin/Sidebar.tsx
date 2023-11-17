@@ -1,8 +1,8 @@
 "use client";
 import { useNavContext } from "@/context/sidebar/SidebarContext";
-import Link from "next/link";
-import React from "react";
-import { useState,  } from "react";
+
+
+
 
 const list: String[] = ["Home", "Experience", "Projects"];
 function Sidebar() {

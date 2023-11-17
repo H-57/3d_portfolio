@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ToastContainer } from 'react-toastify';
+import {SidebarProvider}  from '@/context/sidebar/SidebarContext';
 import 'react-toastify/dist/ReactToastify.css';
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +26,7 @@ export default function RootLayout({
       },
     }}>
 
- 
+<SidebarProvider>
     <html lang="en"> 
       <body className={inter.className}>
         <Navbar/>
@@ -44,6 +45,7 @@ theme="colored"
         {children}
         </body>
     </html>
+    </SidebarProvider>
     </ClerkProvider>
   )
 }

@@ -1,11 +1,12 @@
 
 import {currentUser} from '@clerk/nextjs';
 import Sidebar from '@/components/Admin/Sidebar'
-import Main from '@/components/Admin/Main';
+
+import {SidebarProvider}  from '@/context/sidebar/SidebarContext';
+import EditPage from '@/components/Admin/EditPage';
 
 
-
-async function page() {
+async function page({params}:{params:{id:string}}) {
  
   const user = await currentUser();
 
@@ -20,11 +21,10 @@ return null;
     <>
 <div className="pt-36"></div>
 
- <section className='grid grid-cols-5 border h-[100vh] box-border'>
-<Sidebar  />
-<Main/>
- </section>
-   
+ 
+
+<EditPage id={params.id}/>
+
   
     </>
   )
