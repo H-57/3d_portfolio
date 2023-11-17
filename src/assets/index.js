@@ -28,15 +28,6 @@ import nextjs from "./tech/nextjs.png"
 import linkedin from './tech/linked.png';
 import githublogo from './tech/github.png';
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
-
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
-
 export {
   logo,
   backend,
@@ -61,12 +52,6 @@ export {
   typescript,
   threejs,
   graphql,aws,firebase,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+  
   linkedin,githublogo
 };

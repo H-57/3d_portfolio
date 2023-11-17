@@ -3,10 +3,7 @@ import {
   backend,
   web,
   creator,
-  meta,
-  shopify,
-  tesla,
-  starbucks,
+
   html,
   css,
   javascript,
@@ -24,7 +21,7 @@ import {
   redux,
   threejs,
   nextjs,
-  carrent,
+ 
 } from "../assets/index";
 
 const services = [
@@ -33,32 +30,7 @@ const services = [
   { title: "Web Developer", icon: web },
   { title: "FullStack Developer", icon: creator },
 ];
-const experiences = [
-  {
-    company: "Mybag",
-    projectName: "ecommerce app ",
-    icon: meta,
-    date: "July 2023",
-    points: [
-      "Developing and maintaining web applications using Next .js,React.js and other related technologies.",
-      "use of redux toolkit for manage global level state.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "using react tabel for frontend validation and tailwind css for css.",
-    ],
-  },
-  {
-    company: "3d-portfolio",
-    projectName: "portfolio webapp ",
-    icon: tesla,
-    date: "October 2023",
-    points: [
-      "Developing  web applications using React.js,Three.js,Next.js and other related technologies.",
-      "use 3d models for intractive ui with users.",
-      "Using in this framer motion for build animations.",
-      "Using of typescript for better experience in build time and type safety.",
-    ],
-  },
-];
+
 const tech = [
   { icon: html, tech: "html" },
   { icon: css, tech: "css" },
@@ -78,14 +50,6 @@ const tech = [
   // { icon: firebase, tech: "firebase" },
   { icon: nextjs, tech: "nextjs" },
 ];
-const projects = [
-  {
-    image: carrent,
-    title: "Ecommerce webapp",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate debitis ducimus molestias accusamus facere consectetur ipsum velit delectus sed recusandae?",
-    tech: ["reactjs", "next js", "css"],
-    url:"/projects/1"
-  },
-];
 
-export { services, experiences, tech, projects };
+
+export { services,  tech};

@@ -1,7 +1,7 @@
 "use client"
 
 import { getUrl } from '@/app/utils/serverActions/imageUpload';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import Tabel from './Tabel';
@@ -9,8 +9,30 @@ import Tabel from './Tabel';
 function ExperiencePage({id}:{id?:String}) {
   let reqMethod="post";
 
-    const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,setValue } = useForm();
+  const [existData, setExistData] = useState<any>()
 
+  useEffect(()=>{
+    if(id){
+      fetch(`/api/experience/${id}`).then(res=>res.json()).then(data=>{
+        setExistData(data)
+        
+    
+      })
+    }
+  },[])
+
+
+  if(existData){
+    setValue("title",existData?.title);
+    setValue("company",existData?.company);
+    setValue("date",existData?.date);
+    setValue("desc",existData?.points.join(";"));
+    
+
+   
+  
+  }
 
     const onSubmit = async(data:any) => {
 // console.log(data);
@@ -24,11 +46,15 @@ const imageUrl=await getUrl(image)
   
        let formData=await {...data,icon:imageUrl,image:""}
    
-       console.log(formData,"formdata");
        if(id){
         reqMethod="put";
-         formData=await {...formData,id}
+        if(!imageUrl){
+          formData=await {...formData,icon:existData?.icoon}
+        }
+        
       }
+      //  console.log(formData,"formdata");
+      
 const result=await(await fetch("/api/experience",{
     method:reqMethod,
     body:JSON.stringify(formData)

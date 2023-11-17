@@ -48,10 +48,27 @@ export async function PUT(request: Request) {
   if (!user) {
     return NextResponse.json({ message: "unauth" },{ status: 401});
   }
+
   dbConnection();
   
-  const result = await ExperienceCard.findByIdAndUpdate();
-  return NextResponse.json(result);
+ const {title,company,icon,date,desc}:bodyProps= await request.json();
+  if (!title || !desc || !company || !icon || !date) {
+    return NextResponse.json({
+      message: "please fill all fields",
+      success: "false",
+    });
+  } else {
+   
+    let descArray = desc.split(";");
+   
+  try {
+    dbConnection();
+    const projectData = await ExperienceCard.findOneAndUpdate({title:title},{title,company,icon,date,points:descArray});
+    return NextResponse.json({message:"edit success", success:"true"}, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({message:"failed", success:"false" ,error}, { status: 400 });
+  }
+}
 }
 
 export async function DELETE(request: Request) {

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface props {
   image: StaticImageData;
@@ -13,10 +14,15 @@ interface props {
   tech: string[];
   url: string;
 }
-
+const items = [
+  { id: 'All', text: 'All' },
+  { id: 'Personal', text: 'Personal' },
+  { id: 'Assignments', text: 'Assignments' },
+];
 const ProjectCards = ({ image, title, desc, tech, url }: props) => {
   return (
     <>
+    <motion.div initial={{opacity:0,x:-50,y:-100 }} transition={{duration:0.5 }} whileInView={{opacity:1,x:0,y:0}} >
       <Link href={`/projects/${url?.replaceAll(" ", "-")}`}>
         <Tilt className="shadow-[gray_0px_0px_100px_-50px] rounded-3xl md:w-[300px]  w-[220px]  p-[2px] bg-gradient-to-r from-blue-600 to-pink-700">
           <div className=" p-1 bg-[#151030] rounded-3xl ">
@@ -39,34 +45,46 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
           </div>
         </Tilt>
       </Link>
+      </motion.div>
     </>
   );
 };
 
 
 function Projects() {
+  const [fetchData,setFetchData]=useState<any[]>()
   const [Data, setData] = useState<any[]>()
+  const [activeItem, setActiveItem] = useState<string>("all");
   useEffect(() => {
-    fetch(`/api/projects`).then((res) => res.json()).then((data) => setData(data))
-
+    fetch(`/api/projects`).then((res) => res.json()).then((data) => {setFetchData(data); setData(data)})
+    
 
   }, [])
-  let filterData = Data?.filter((elm, index) => {
-    if (elm.category == "p") {
-      return elm
-    }
-  })
-  console.log(filterData,"filterData")
-  const [activeItem, setActiveItem] = useState<string>("all");
 
-  const items = [
-    { id: 'all', text: 'All' },
-    { id: 'personal', text: 'Personal' },
-    { id: 'assignments', text: 'Assignments' },
-  ];
+
+  useEffect(() => {
+   setData(filterData()) 
+  },[activeItem])
+
+  let filterData = () => {
+    if(activeItem=="All"){
+      return fetchData
+    }
+   const result= fetchData?.filter((elm, index) => {
+      if (elm.category == activeItem ) {
+        // console.log(elm);
+        return elm
+      }
+    })
+    return result
+  }
+  
+
+
 
   const handleItemClick = (itemId: string) => {
     setActiveItem(itemId);
+
   };
 
   return (
@@ -84,7 +102,7 @@ function Projects() {
         </div>
 
         {/* project cards */}
-        <section className="flex gap-5">
+        <section className="flex gap-5 m-8">
 
 
           {Data?.map((elm, index) => (
