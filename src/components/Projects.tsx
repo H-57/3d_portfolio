@@ -102,7 +102,7 @@ function Projects() {
         </div>
 
         {/* project cards */}
-        <section className="flex gap-5 m-8">
+        <section className="flex gap-5 m-8 flex-wrap justify-between">
 
 
           {Data?.map((elm, index) => (
