@@ -1,14 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
 import SectionWrapper from "./hoc/SectionWrapper";
 import Earth from "./canvas/Earth";
 import StarsCanvas from "./canvas/Stars";
-import { motion } from "framer-motion";
+import { motion,useInView } from "framer-motion";
 const Contact = () => {
   const { register, handleSubmit ,reset} = useForm();
+
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+  // form submit function
   async function formSubmit(data:any){
 
     const result=await(await fetch("/api/email",{
@@ -25,14 +29,15 @@ const Contact = () => {
     toast.error(result.message)
   }
   }
+
   return (
     <>
-      <div className="flex flex-col md:flex-row-reverse relative">
+      <div ref={ref} className="flex flex-col md:flex-row-reverse relative">
         <motion.div
          
           className=" h-[40vh] md:h-[80vh]  md:w-[60%]   m-auto"
         >
-          <Earth />
+         {isInView&& <Earth />}
         </motion.div>
 
         <motion.div

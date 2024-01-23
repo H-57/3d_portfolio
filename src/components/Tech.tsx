@@ -1,16 +1,24 @@
 "use client"
-import React from 'react'
+import React,{ useEffect, useRef, useState} from 'react'
 import Ball from './canvas/Ball'
 import SectionWrapper from './hoc/SectionWrapper'
 import {tech}from "./constant"
-import {motion} from 'framer-motion';
+import {motion,useInView} from 'framer-motion';
 
 const Tech = () => {
+const [Show, setShow] = useState(false)
 
-
+  const ref = useRef(null)
+  const isInView = useInView(ref)
+  useEffect(()=>{
+    if(isInView){
+      setShow(true)
+    }
+  },[isInView])
 
   return (<>
-  <h2 className=' capitalize md:text-5xl sm:text-3xl font-extrabold m-10 text-center' >Tech Skills</h2>
+  <h2 ref={ref} className=' capitalize md:text-5xl sm:text-3xl font-extrabold m-10 text-center' >Tech Skills</h2>
+  {Show&&
 <div className='flex flex-row flex-wrap justify-center gap-14 md:w-[80vw]'>
 
 
@@ -27,7 +35,7 @@ const Tech = () => {
     <Ball  icon={elm.icon}/>
   </motion.div>
   )}
-  </div>
+  </div>}
   </>
     
   )
