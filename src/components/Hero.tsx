@@ -15,7 +15,7 @@ const Hero = () => {
   <motion.div initial={{opacity:0,x:-100}}
     transition={{type:"spring",duration:0.7,delay:0.7}}
     whileInView={{opacity:1,x:0}} className='font-bold lg:text-4xl text-2xl '><p className='text-6xl lg:text-8xl  '>Hi,I&apos;m <span className=' text-violet-600 '>Tarun</span></p>
-  <p>I am a MERN stack developer and skilled full stck developer.</p></motion.div>
+  <p>I am a MERN stack developer and skilled full stack developer.</p></motion.div>
 </div>
 <div className='absolute w-full lg:h-screen h-[60vh] bottom-0'>
 
