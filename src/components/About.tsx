@@ -17,7 +17,7 @@ const ServiceCards = ({ title, icon,index }: card) => {
     <Tilt  >
       <motion.div   
     initial={{opacity:0,x:-100}}
-    transition={{duration:0.4,delay:1*index}}
+    transition={{duration:0.4,delay:0.5*index}}
     whileInView={{opacity:1,x:0}}
   
  

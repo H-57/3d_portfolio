@@ -32,6 +32,7 @@ const Contact = () => {
 
   return (
     <>
+    <h3  className='text-3xl md:text-6xl font-extrabold text-center' >Contact Us</h3>
       <div ref={ref} className="flex flex-col md:flex-row-reverse relative">
         <motion.div
          

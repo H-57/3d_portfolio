@@ -39,15 +39,15 @@ const tech = [
   { icon: docker, tech: "docker" },
   { icon: nodejs, tech: "nodejs" },
   { icon: git, tech: "git" },
-  // { icon: github, tech: "github" },
+  { icon: github, tech: "github" },
   { icon: mongodb, tech: "mongodb" },
   { icon: typescript, tech: "typescript" },
   { icon: tailwind, tech: "tailwind" },
   // { icon: aws, tech: "aws" },
-  // { icon: graphql, tech: "graphql" },
+  { icon: graphql, tech: "graphql" },
   { icon: redux, tech: "redux" },
   { icon: threejs, tech: "threejs" },
-  // { icon: firebase, tech: "firebase" },
+  { icon: firebase, tech: "firebase" },
   { icon: nextjs, tech: "nextjs" },
 ];
 

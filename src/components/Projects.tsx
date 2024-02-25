@@ -24,7 +24,7 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
     <>
     <motion.div initial={{opacity:0,x:-50,y:-100 }} transition={{duration:0.5 }} whileInView={{opacity:1,x:0,y:0}} >
       <Link href={`/projects/${url?.replaceAll(" ", "-")}`}>
-        <Tilt className="shadow-[gray_0px_0px_100px_-50px] rounded-3xl md:w-[300px]  w-[220px]  p-[2px] bg-gradient-to-r from-blue-600 to-pink-700">
+        <Tilt className="shadow-[gray_0px_0px_100px_-50px] rounded-3xl md:w-[300px]  w-[full]  p-[2px] bg-gradient-to-r from-blue-600 to-pink-700">
           <div className=" p-1 bg-[#151030] rounded-3xl ">
             <Image
               width={500}
@@ -34,7 +34,7 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
               className="rounded-md w-[90%] h-[60%] m-auto mt-3"
             />
             <h2 className=" mt-5 m-3 font-semibold text-2xl">{title}</h2>
-            <h3 className="m-3 text-sm font-semibold">{desc.slice(0, 230)}...</h3>
+            <h3 className="m-3 text-sm font-semibold text-clip h-auto">{desc.slice(0, 210)}...</h3>
             <span className="m-3 text-[1.2rem] text-blue-500 capitalize">
               #{tech[0]}
             </span>
@@ -54,7 +54,7 @@ const ProjectCards = ({ image, title, desc, tech, url }: props) => {
 function Projects() {
   const [fetchData,setFetchData]=useState<any[]>()
   const [Data, setData] = useState<any[]>()
-  const [activeItem, setActiveItem] = useState<string>("all");
+  const [activeItem, setActiveItem] = useState<string>("All");
   useEffect(() => {
     fetch(`/api/projects`).then((res) => res.json()).then((data) => {setFetchData(data); setData(data)})
     
